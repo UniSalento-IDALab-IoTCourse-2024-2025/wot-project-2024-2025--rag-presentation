@@ -2,62 +2,105 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Progetto RAG Universitario</title>
+    <title>Agente Intelligente Universitario - Progetto RAG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --light-bg: #ecf0f1;
+        }
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         h1, h2 {
-            color: #2c3e50;
+            color: var(--primary);
         }
         a {
-            color: #2980b9;
+            color: var(--accent);
+            text-decoration: none;
         }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 4px;
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .images {
+            margin-top: 2rem;
+        }
+        .images img {
+            max-width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
 
-    <h1>💬 Sistemi RAG per un agente intelligente in ambito universitario</h1>
+<header>
+    <h1>🎓 Agente Intelligente per l'Ateneo</h1>
+    <p>Sistema basato su Retrieval-Augmented Generation per l'assistenza informativa</p>
+</header>
 
+<main>
+    <h2>Descrizione</h2>
     <p>
-        Questo progetto nasce con l’obiettivo di facilitare la consultazione delle informazioni 
-        universitarie attraverso un chatbot intelligente basato su tecnologie 
-        <strong>Retrieval-Augmented Generation (RAG)</strong>.
+        Il progetto mira a semplificare l’accesso alle informazioni universitarie tramite un chatbot intelligente,
+        capace di rispondere in linguaggio naturale a domande su regolamenti, scadenze, procedure e altro ancora.
     </p>
 
-    <h2>🔧 Tecnologie principali</h2>
+    <h2>Tecnologie</h2>
     <ul>
-        <li><strong>LangChain</strong> per orchestrare il flusso LLM + retrieval</li>
-        <li><strong>Cohere</strong> come LLM multilingua</li>
-        <li><strong>FAISS</strong> per il database vettoriale</li>
-        <li><strong>MongoDB + Node.js</strong> per la gestione utenti e sessioni</li>
-        <li><strong>React Native</strong> per l’interfaccia mobile</li>
+        <li><strong>LangChain + Cohere</strong> per la pipeline RAG</li>
+        <li><strong>FAISS</strong> per la gestione del database vettoriale</li>
+        <li><strong>Node.js + MongoDB</strong> per autenticazione e API</li>
+        <li><strong>React Native</strong> per l’interfaccia mobile cross-platform</li>
     </ul>
 
-    <h2>📦 Repository del progetto</h2>
+    <h2>Repository GitHub</h2>
     <ul>
-        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--presentation" target="_blank">📁 Presentazione generale</a></li>
-        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--rag-core" target="_blank">🧠 RAG Core (Python)</a></li>
-        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--userchat-service" target="_blank">🛠️ UserChat Service (Node.js)</a></li>
-        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--frontend" target="_blank">📱 Frontend (React Native)</a></li>
+        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--presentation">📁 Presentazione del progetto</a></li>
+        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--rag-core">🧠 RAG Core</a></li>
+        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--userchat-service">🛠️ UserChat Service</a></li>
+        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2023-2024/wot-project-2024-2025--frontend">📱 Frontend</a></li>
     </ul>
 
-    <h2>📄 Documentazione</h2>
-    <p>
-        Tutti i dettagli del progetto, architetture, flussi e valutazioni sono contenuti nella <strong>documentazione PDF</strong> allegata alla consegna.
-    </p>
+    <h2>Galleria</h2>
+    <div class="images">
+        <img src="img/architecture_general.png" alt="Architettura generale del sistema">
+        <img src="img/usecase_example.png" alt="Esempio di caso d'uso">
+    </div>
+</main>
 
-    <p style="margin-top: 30px;"><em>Progetto realizzato da Stefano Palumbo e Andrea Barone.</em></p>
+<footer>
+    Progetto sviluppato da <strong>Francesco Maggio</strong><br>
+    Università del Salento - Corso IoT 2024/2025
+</footer>
 
 </body>
 </html>
