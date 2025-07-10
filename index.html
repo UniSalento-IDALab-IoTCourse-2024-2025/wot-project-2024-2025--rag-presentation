@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Agente Intelligente Universitario - Progetto RAG</title>
+    <title>Agente Intelligente Universitario - Progetto IoT 2024/25</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         :root {
@@ -19,8 +19,11 @@
         header {
             background: var(--primary);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.5rem;
             text-align: center;
+        }
+        header h1 {
+            margin-bottom: 0.3rem;
         }
         main {
             max-width: 1000px;
@@ -30,8 +33,10 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        h1, h2 {
+        h2 {
             color: var(--primary);
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 0.4rem;
         }
         a {
             color: var(--accent);
@@ -50,56 +55,124 @@
             color: #555;
         }
         .images {
-            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
         .images img {
             max-width: 100%;
             border-radius: 6px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            margin-bottom: 1rem;
+        }
+        .highlight {
+            background-color: #dff0ff;
+            padding: 0.8rem;
+            border-left: 5px solid var(--accent);
+            margin: 1rem 0;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🎓 Agente Intelligente per l'Ateneo</h1>
-    <p>Sistema basato su Retrieval-Augmented Generation per l'assistenza informativa</p>
+    <h1>🎓 Chatbot per l'Unisalento</h1>
+    <p>Basato su Retrieval-Augmented Generation (RAG)</p>
 </header>
 
 <main>
-    <h2>Descrizione</h2>
+
+    <h2>📌 Obiettivo del progetto</h2>
     <p>
-        Il progetto mira a semplificare l’accesso alle informazioni universitarie tramite un chatbot intelligente,
-        capace di rispondere in linguaggio naturale a domande su regolamenti, scadenze, procedure e altro ancora.
+        Il sistema sviluppato fornisce assistenza informativa agli studenti universitari tramite un agente conversazionale intelligente.
+        L’utente può porre domande su scadenze, moduli, regolamenti e ricevere risposte mirate e aggiornate, grazie all'integrazione tra modelli linguistici e documenti ufficiali del sito
+        <a href="https://www.unisalento.it">unisalento.it</a>.
     </p>
 
-    <h2>Tecnologie</h2>
+    <div class="highlight">
+        🔍 <strong>Approccio RAG:</strong> combina la potenza dei LLM con documenti istituzionali recuperati tramite crawling automatico.
+    </div>
+
+    <h2>🧠 Tecnologie Utilizzate</h2>
     <ul>
-        <li><strong>LangChain + Cohere</strong> per la pipeline RAG</li>
-        <li><strong>FAISS</strong> per la gestione del database vettoriale</li>
-        <li><strong>Node.js + MongoDB</strong> per autenticazione e API</li>
-        <li><strong>React Native</strong> per l’interfaccia mobile cross-platform</li>
+        <li><strong>LangChain</strong>: orchestrazione della pipeline RAG in Python</li>
+        <li><strong>Cohere</strong>: modello LLM <code>command-r-plus</code> via API</li>
+        <li><strong>HuggingFace</strong>: embeddings semantici con il modello <code>BAAI/bge-small-it</code></li>
+        <li><strong>FAISS</strong>: database vettoriale per ricerca per similarità (cosine similarity)</li>
+        <li><strong>PyPDFLoader</strong>: estrazione automatica di testo da documenti PDF</li>
+        <li><strong>Node.js</strong> + <strong>Express</strong>: backend per autenticazione, API e salvataggio chat</li>
+        <li><strong>MongoDB</strong> + <strong>Mongoose</strong>: database documentale per utenti e conversazioni</li>
+        <li><strong>JWT</strong> (JSON Web Tokens): autenticazione sicura e stateless</li>
+        <li><strong>React Native con Expo</strong>: sviluppo mobile cross-platform</li>
+        <li><strong>TypeScript</strong>: tipizzazione statica lato frontend</li>
     </ul>
 
-    <h2>Repository GitHub</h2>
+    <h2>🧩 Architettura dei microservizi</h2>
+    <p>Il sistema è suddiviso in tre microservizi principali:</p>
+    <ul>
+        <li><strong>RAG Core:</strong> pre-elabora i testi e genera le risposte tramite LangChain + FAISS</li>
+        <li><strong>UserChat Service:</strong> gestisce utenti, JWT, salvataggio delle chat</li>
+        <li><strong>Frontend App:</strong> consente agli studenti di conversare con il sistema da mobile</li>
+    </ul>
+
+    <figure style="text-align: center; margin-top: 2rem;">
+        <img src="img/architecture_general.png" alt="Architettura generale del sistema" style="width: 60%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
+            Figura 1 – Architettura generale del sistema, composta da tre microservizi collegati tra loro.
+        </figcaption>
+    </figure>
+
+    <h2>📚 Repository GitHub</h2>
     <ul>
         <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2024-2025/wot-project-2024-2025--rag-presentation">📁 Presentazione del progetto</a></li>
         <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2024-2025/wot-project-2024-2025--rag-core">🧠 RAG Core</a></li>
         <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2024-2025/wot-project-2024-2025--userchat-service">🛠️ UserChat Service</a></li>
-        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2024-2025/wot-project-2024-2025--frontend">📱 Frontend</a></li>
+        <li><a href="https://github.com/UniSalento-IDALab-IoTCourse-2024-2025/wot-project-2024-2025--frontend">📱 Frontend Web-Mobile</a></li>
     </ul>
 
-    <h2>Galleria</h2>
-    <div class="images">
-        <img src="img/architecture_general.png" alt="Architettura generale del sistema">
-        <img src="img/usecase_example.png" alt="Esempio di caso d'uso">
-    </div>
+    <h2>📈 Galleria</h2>
+
+    <figure style="text-align: center; margin-top: 2rem;">
+        <img src="img/core_chain.png" alt="Pipeline interna del RAG" style="width: 70%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
+            Figura 2 – Pipeline interna del modulo RAG: recupero del contesto, generazione della risposta e restituzione al frontend.
+        </figcaption>
+    </figure>
+
+
+    <figure style="text-align: center; margin-top: 2rem;">
+        <img src="img/ingestion.jpg" alt="Pipeline di ingestion dei dati testuali" style="width: 70%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
+            Figura 3 – Pipeline di ingestion: dal crawling web alla generazione degli embedding testuali.
+        </figcaption>
+    </figure>
+
+    <figure style="text-align: center; margin-top: 2rem;">
+        <img src="img/usecase_example.png" alt="Caso d'uso - Domanda scadenze laurea" style="width: 60%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
+            Figura 4 – Caso d'uso: richiesta sulle scadenze per la laurea tramite chatbot.
+        </figcaption>
+    </figure>
+
+    <figure style="text-align: center; margin-top: 2rem;">
+        <img src="img/evaluation_chart.png" alt="Grafico di valutazione risposte LLM" style="width: 60%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
+            Figura 5 – Grafico riassuntivo della valutazione qualitativa delle risposte LLM.
+        </figcaption>
+    </figure>
+
+    <figure style="text-align: center; margin-top: 2rem;">
+        <img src="img/sequence_diagram.png" alt="Diagramma di sequenza generazione risposta RAG" style="width: 75%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
+            Figura 6 – Diagramma di sequenza della generazione di una risposta da parte del sistema RAG.
+        </figcaption>
+    </figure>
+
 </main>
 
 <footer>
-    Progetto sviluppato da <strong>Francesco Maggio</strong> e <strong>Andrea Barone</strong><br>
-    Università del Salento - Corso IoT 2024/2025
+    Progetto realizzato da <strong>Francesco Maggio</strong> e <strong>Andrea Barone</strong><br>
+    Università del Salento – Corso Internet of Things 2024/2025
 </footer>
 
 </body>
